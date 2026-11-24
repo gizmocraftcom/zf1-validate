@@ -202,12 +202,14 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
             return false;
         }
 
+        // $this->_format is null when only a locale is set; strpos()/strtoupper() reject null since PHP 8.1
+        $format = (string) $this->_format;
         try {
             $parsed = Zend_Locale_Format::getDate($value, array(
                                                   'date_format' => $this->_format, 'format_type' => 'iso',
                                                   'fix_date'    => false));
-            if (isset($parsed['year']) and ((strpos(strtoupper($this->_format), 'YY') !== false) and
-                (strpos(strtoupper($this->_format), 'YYYY') === false))) {
+            if (isset($parsed['year']) and ((strpos(strtoupper($format), 'YY') !== false) and
+                (strpos(strtoupper($format), 'YYYY') === false))) {
                 $parsed['year'] = Zend_Date::getFullYear($parsed['year']);
             }
         } catch (Exception $e) {
@@ -215,34 +217,34 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
             return false;
         }
 
-        if (((strpos($this->_format, 'Y') !== false) or (strpos($this->_format, 'y') !== false)) and
+        if (((strpos($format, 'Y') !== false) or (strpos($format, 'y') !== false)) and
             (!isset($parsed['year']))) {
             // Year expected but not found
             return false;
         }
 
-        if ((strpos($this->_format, 'M') !== false) and (!isset($parsed['month']))) {
+        if ((strpos($format, 'M') !== false) and (!isset($parsed['month']))) {
             // Month expected but not found
             return false;
         }
 
-        if ((strpos($this->_format, 'd') !== false) and (!isset($parsed['day']))) {
+        if ((strpos($format, 'd') !== false) and (!isset($parsed['day']))) {
             // Day expected but not found
             return false;
         }
 
-        if (((strpos($this->_format, 'H') !== false) or (strpos($this->_format, 'h') !== false)) and
+        if (((strpos($format, 'H') !== false) or (strpos($format, 'h') !== false)) and
             (!isset($parsed['hour']))) {
             // Hour expected but not found
             return false;
         }
 
-        if ((strpos($this->_format, 'm') !== false) and (!isset($parsed['minute']))) {
+        if ((strpos($format, 'm') !== false) and (!isset($parsed['minute']))) {
             // Minute expected but not found
             return false;
         }
 
-        if ((strpos($this->_format, 's') !== false) and (!isset($parsed['second']))) {
+        if ((strpos($format, 's') !== false) and (!isset($parsed['second']))) {
             // Second expected  but not found
             return false;
         }
