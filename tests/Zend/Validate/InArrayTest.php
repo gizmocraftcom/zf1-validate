@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Validate
  */
+#[Group('Zend_Validate')]
 class Zend_Validate_InArrayTest extends PHPUnit\Framework\TestCase
 {
     /**
@@ -191,9 +192,7 @@ class Zend_Validate_InArrayTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($validator->isValid('A'));
     }
 
-    /**
-     * @group GH-365
-     */
+    #[Group('GH-365')]
     public function testMultidimensionalArrayNotFound()
     {
         $input = array(
@@ -204,9 +203,7 @@ class Zend_Validate_InArrayTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($validator->isValid($input));
     }
 
-    /**
-     * @group GH-365
-     */
+    #[Group('GH-365')]
     public function testErrorMessageWithArrayValue()
     {
         $input = array(

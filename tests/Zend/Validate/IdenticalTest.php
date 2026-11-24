@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Zend_Validate_Identical
@@ -30,8 +31,8 @@
  * @uses       Zend_Validate_Identical
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Validate
  */
+#[Group('Zend_Validate')]
 class Zend_Validate_IdenticalTest extends PHPUnit\Framework\TestCase
 {
     /**
@@ -93,18 +94,14 @@ class Zend_Validate_IdenticalTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($this->validator->isValid('foo'));
     }
 
-    /**
-     * @group ZF-6953
-     */
+    #[Group('ZF-6953')]
     public function testValidatingAgainstEmptyToken()
     {
         $this->validator->setToken('');
         $this->assertTrue($this->validator->isValid(''));
     }
 
-    /**
-     * @group ZF-7128
-     */
+    #[Group('ZF-7128')]
     public function testValidatingAgainstNonStrings()
     {
         $this->validator->setToken(true);

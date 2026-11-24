@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Zend_Validate_Barcode
@@ -30,15 +31,15 @@
  * @uses       Zend_Validate_Barcode
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Validate
  */
+#[Group('Zend_Validate')]
 class Zend_Validate_BarcodeTest extends PHPUnit\Framework\TestCase
 {
     /**
      * Test if EAN-13 contains only numeric characters
      *
-     * @group ZF-3297
      */
+    #[Group('ZF-3297')]
     public function testEan13ContainsOnlyNumeric()
     {
         $barcode = new Zend_Validate_Barcode('ean13');
@@ -425,9 +426,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($barcode->isValid('0234567'));
     }
 
-    /**
-     * @group ZF-10116
-     */
+    #[Group('ZF-10116')]
     public function testArrayLengthMessage()
     {
         $barcode = new Zend_Validate_Barcode('ean8');

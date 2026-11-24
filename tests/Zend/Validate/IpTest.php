@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Validate
  */
+#[Group('Zend_Validate')]
 class Zend_Validate_IpTest extends PHPUnit\Framework\TestCase
 {
     /**
@@ -112,10 +113,8 @@ class Zend_Validate_IpTest extends PHPUnit\Framework\TestCase
         $this->assertFalse($this->_validator->isValid('192.168.0.2 adfs'));
     }
 
-    /**
-     * @group ZF-2694
-     * @group ZF-8253
-     */
+    #[Group('ZF-2694')]
+    #[Group('ZF-8253')]
     public function testIPv6addresses()
     {
         $IPs = array(

@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Validate
  */
+#[Group('Zend_Validate')]
 class Zend_Validate_AbstractTest extends PHPUnit\Framework\TestCase
 {
     protected $validator;
@@ -180,9 +181,7 @@ class Zend_Validate_AbstractTest extends PHPUnit\Framework\TestCase
         $this->assertStringContainsString('******', $message);
     }
 
-    /**
-     * @group ZF-4463
-     */
+    #[Group('ZF-4463')]
     public function testDoesNotFailOnObjectInput()
     {
         $this->assertFalse($this->validator->isValid(new stdClass()));

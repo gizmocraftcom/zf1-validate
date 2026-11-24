@@ -19,6 +19,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -247,9 +248,7 @@ class Zend_Validate_IsbnTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($validator->isValid('978 0 555023 40 2'));
     }
 
-    /**
-     * @group ZF-9605
-     */
+    #[Group('ZF-9605')]
     public function testInvalidTypeGiven()
     {
         $validator = new Zend_Validate_Isbn();

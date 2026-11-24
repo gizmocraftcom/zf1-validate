@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Validate
  */
+#[Group('Zend_Validate')]
 class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
 {
     /**
@@ -88,9 +89,9 @@ class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that characters trailing an otherwise valid date cause the input to be invalid
      *
-     * @group ZF-1804
      * @return void
      */
+    #[Group('ZF-1804')]
     public function testCharactersTrailingInvalid()
     {
         $dateValid          = '2007-08-02';
@@ -102,9 +103,9 @@ class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that characters leading an otherwise valid date cause the input to be invalid
      *
-     * @group ZF-1804
      * @return void
      */
+    #[Group('ZF-1804')]
     public function testCharactersLeadingInvalid()
     {
         $dateValid         = '2007-08-02';
@@ -126,9 +127,9 @@ class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that the validator can handle different manual dateformats
      *
-     * @group ZF-2003
      * @return void
      */
+    #[Group('ZF-2003')]
     public function testUseManualFormat()
     {
         $this->assertTrue($this->_validator->setFormat('dd.MM.YYYY')->isValid('10.01.2008'));
@@ -152,9 +153,9 @@ class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that the validator can handle different dateformats from locale
      *
-     * @group ZF-2003
      * @return void
      */
+    #[Group('ZF-2003')]
     public function testUseLocaleFormat()
     {
         $errorOccurredLocal = false;
@@ -190,9 +191,9 @@ class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that the validator can handle different dateformats from locale
      *
-     * @group ZF-2003
      * @return void
      */
+    #[Group('ZF-2003')]
     public function testLocaleContructor()
     {
         set_error_handler(array($this, 'errorHandlerIgnore'));
@@ -248,8 +249,8 @@ class Zend_Validate_DateTest extends PHPUnit\Framework\TestCase
      * @param  integer $errline
      * @param  array   $errcontext
      * @return void
-     * @group ZF-2789
      */
+    #[Group('ZF-2789')]
     public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
