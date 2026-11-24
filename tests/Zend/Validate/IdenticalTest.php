@@ -128,4 +128,20 @@ class Zend_Validate_IdenticalTest extends PHPUnit\Framework\TestCase
         $validator->setStrict(true);
         $this->assertFalse($validator->isValid(array('token' => '123')));
     }
+
+    public function testNullTokenWithContextDoesNotUseNullArrayKey()
+    {
+        // Zend_Form_Element_Hash validates with a null token when no session hash exists.
+        $this->assertFalse($this->validator->isValid('abc', array('foo' => 'bar')));
+        $this->assertSame(
+            array(Zend_Validate_Identical::MISSING_TOKEN),
+            array_keys($this->validator->getMessages())
+        );
+    }
+
+    public function testNullTokenWithContextKeyedByEmptyStringStillUsesThatValue()
+    {
+        $this->assertTrue($this->validator->isValid('abc', array('' => 'abc')));
+        $this->assertFalse($this->validator->isValid('abc', array('' => 'xyz')));
+    }
 }

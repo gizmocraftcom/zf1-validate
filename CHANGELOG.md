@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+### Fixed
+
+- `Zend_Validate_Identical::isValid()` no longer uses a `null` token as array key of the context (`array_key_exists(null, ...)`, deprecated since PHP 8.5). This happened for example in `Zend_Form_Element_Hash` when no session hash exists. A `null` token is looked up as the empty string key, exactly as PHP did before, so behaviour is unchanged. Regression tests added.
+
 ## 2.0.0
 
 Fork of `diablomedia/zendframework1-validate`, published as `gizmocraft/zendframework1-validate`.

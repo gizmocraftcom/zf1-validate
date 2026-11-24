@@ -139,10 +139,11 @@ class Zend_Validate_Identical extends Zend_Validate_Abstract
     {
         $this->_setValue($value);
 
-        if (($context !== null) && isset($context) && array_key_exists($this->getToken(), $context)) {
-            $token = $context[$this->getToken()];
-        } else {
-            $token = $this->getToken();
+        $token = $this->getToken();
+        // A null key is the empty string key in PHP; passing null is deprecated since PHP 8.5.
+        $contextKey = $token ?? '';
+        if (($context !== null) && isset($context) && array_key_exists($contextKey, $context)) {
+            $token = $context[$contextKey];
         }
 
         if ($token === null) {
