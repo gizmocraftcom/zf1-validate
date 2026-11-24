@@ -12,10 +12,6 @@ parameters:
         - '#Variable \$context in isset\(\) always exists and is not nullable\.#'
         - '#Binary operation "\*" between non-empty-string and .+ results in an error\.#'
         - '#Binary operation "\*" between 3 and non-empty-string results in an error\.#'
-        # This is intentional for short circuiting/execution flow management
-        -
-            message: '#Do-while loop condition is always false\.#'
-            path: ./src/Zend/Validate/Hostname.php
         -
             message: '#Binary operation "\*" between int<1, max> and non-empty-string results in an error\.#'
             path: ./src/Zend/Validate/Ccnum.php
