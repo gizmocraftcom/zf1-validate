@@ -1,7 +1,6 @@
 # Zend Framework 1 - Validate
 
 [![Build](https://github.com/gizmocraftcom/zf1-validate/workflows/Build/badge.svg?event=push)](https://github.com/gizmocraftcom/zf1-validate/actions?query=workflow%3ABuild+event%3Apush)
-[![codecov](https://codecov.io/gh/gizmocraftcom/zf1-validate/branch/master/graph/badge.svg)](https://codecov.io/gh/gizmocraftcom/zf1-validate)
 [![Latest Stable Version](https://poser.pugx.org/gizmocraft/zendframework1-validate/v/stable)](https://packagist.org/packages/gizmocraft/zendframework1-validate)
 [![Total Downloads](https://poser.pugx.org/gizmocraft/zendframework1-validate/downloads)](https://packagist.org/packages/gizmocraft/zendframework1-validate)
 [![License](https://poser.pugx.org/gizmocraft/zendframework1-validate/license)](https://packagist.org/packages/gizmocraft/zendframework1-validate)
